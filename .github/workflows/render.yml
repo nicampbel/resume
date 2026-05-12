@@ -36,7 +36,7 @@ jobs:
 
       - name: Prepare for GitHub Pages
         run: |
-          mv rendercv_output/Nicholas_Campbell_CV.html rendercv_output/index.html
+          cp page_template.html rendercv_output/index.html
           touch rendercv_output/.nojekyll
 
       - name: Upload PDF artifact
