@@ -81,68 +81,53 @@
       flex-shrink: 0;
     }
 
-    /* ── Pages container ── */
+    /* ── PDF viewer ── */
     main {
       max-width: 960px;
       margin: 0 auto;
-      padding: 48px 24px 72px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .page-wrap {
-      width: 100%;
+      padding: 40px 24px 64px;
       opacity: 0;
-      transform: translateY(16px);
-      animation: fadeUp 0.5s ease forwards;
+      animation: fadeUp 0.4s ease 0.05s forwards;
     }
-
-    .page-wrap:nth-child(1) { animation-delay: 0.05s; }
-    .page-wrap:nth-child(2) { animation-delay: 0.15s; }
-    .page-wrap:nth-child(3) { animation-delay: 0.25s; }
 
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .page-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
+    .pdf-wrap {
       box-shadow: var(--page-shadow);
       border-radius: 1px;
+      overflow: hidden;
+      background: #fff;
     }
 
-    /* ── Loading state ── */
-    #loader {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 80px 0;
+    .pdf-wrap embed {
+      display: block;
+      width: 100%;
+      height: calc(100vh - 64px - 80px);
+      min-height: 600px;
+      border: none;
+    }
+
+    /* Mobile fallback — embed unreliable on iOS */
+    .mobile-fallback {
+      display: none;
+      padding: 48px 24px;
+      text-align: center;
       color: var(--navy);
-      opacity: 0.5;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      line-height: 1.7;
     }
 
-    .spinner {
-      width: 28px;
-      height: 28px;
-      border: 2px solid rgba(26,46,74,0.15);
-      border-top-color: var(--navy);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    .mobile-fallback a {
+      color: var(--navy);
+      font-weight: 500;
     }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 0 0 40px;
+      padding: 24px 0 40px;
       font-size: 0.75rem;
       color: rgba(26,46,74,0.35);
       letter-spacing: 0.04em;
@@ -151,7 +136,9 @@
     @media (max-width: 600px) {
       header { padding: 0 16px; }
       .header-name { font-size: 1.1rem; }
-      main { padding: 32px 12px 56px; gap: 16px; }
+      main { padding: 20px 12px 48px; }
+      .pdf-wrap embed { display: none; }
+      .mobile-fallback { display: block; }
     }
   </style>
 </head>
@@ -167,44 +154,17 @@
     </a>
   </header>
 
-  <main id="pages">
-    <div id="loader">
-      <div class="spinner"></div>
-      Loading CV…
+  <main>
+    <div class="pdf-wrap">
+      <embed src="Nicholas_Campbell_CV.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf">
+      <div class="mobile-fallback">
+        PDF preview isn't supported on this browser.<br>
+        <a href="Nicholas_Campbell_CV.pdf">Tap here to open the CV</a> or use the Download button above.
+      </div>
     </div>
   </main>
 
   <footer>nicampbel.github.io/resume</footer>
-
-  <script>
-    (function () {
-      const container = document.getElementById('pages');
-      const loader = document.getElementById('loader');
-      let index = 1;
-
-      function loadNext() {
-        const img = new Image();
-        img.src = 'Nicholas_Campbell_CV_' + index + '.png';
-        img.alt = 'CV page ' + index;
-        img.onload = function () {
-          if (index === 1) loader.remove();
-          const wrap = document.createElement('div');
-          wrap.className = 'page-wrap';
-          wrap.appendChild(img);
-          container.appendChild(wrap);
-          index++;
-          loadNext();
-        };
-        img.onerror = function () {
-          if (index === 1) {
-            loader.innerHTML = 'Could not load CV pages.';
-          }
-        };
-      }
-
-      loadNext();
-    })();
-  </script>
 
 </body>
 </html>
