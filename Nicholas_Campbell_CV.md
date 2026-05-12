@@ -3,7 +3,7 @@
 - Email: [campbellnicholas573@gmail.com](mailto:campbellnicholas573@gmail.com)
 - Location: Stellenbosch, South Africa
 - Website: [nicampbel.github.ioresume](https://nicampbel.github.io/resume)
-- LinkedIn: [nicholas-campbell-bb7ba51a6](https://linkedin.com/in/nicholas-campbell-bb7ba51a6)
+- LinkedIn: [nicampbel](https://linkedin.com/in/nicampbel)
 - GitHub: [nicampbel](https://github.com/nicampbel)
 
 

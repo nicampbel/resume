@@ -468,7 +468,7 @@
   [#fa-icon("location-dot", size: 0.9em) #h(0.05cm)Stellenbosch, South Africa],
   [#box(original-link("mailto:campbellnicholas573@gmail.com")[#fa-icon("envelope", size: 0.9em) #h(0.05cm)campbellnicholas573\@gmail.com])],
   [#box(original-link("https://nicampbel.github.io/resume")[#fa-icon("link", size: 0.9em) #h(0.05cm)nicampbel.github.io\/resume])],
-  [#box(original-link("https://linkedin.com/in/nicholas-campbell-bb7ba51a6")[#fa-icon("linkedin", size: 0.9em) #h(0.05cm)nicholas-campbell-bb7ba51a6])],
+  [#box(original-link("https://linkedin.com/in/nicampbel")[#fa-icon("linkedin", size: 0.9em) #h(0.05cm)nicampbel])],
   [#box(original-link("https://github.com/nicampbel")[#fa-icon("github", size: 0.9em) #h(0.05cm)nicampbel])],
 )
 #connections(connections-list)
