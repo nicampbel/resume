@@ -1,134 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        Nicholas Campbell's CV
-    </title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css"
-        integrity="sha512-Pmhg2i/F7+5+7SsdoUqKeH7UAZoVMYb1sxGOoJ0jWXAEHP0XV2H4CITyK267eHWp2jpj7rtqWNkmEOw1tNyYpg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.12/dist/katex.min.css" integrity="sha384-PDbUeNCuE6bOPudPOgFyIUEy3UJawJVwr3XlGO90FIuf5qNIoTLSgOJo/dC2ZXV/" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicholas Campbell — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.12/dist/katex.min.js" integrity="sha384-VkqWq8xtm5YQk1BBXczQ8/Sx+DlCzF8cuS43bZwmtVXzRFtyLTqTCdP7MKmKo+KN" crossorigin="anonymous"></script>
+    :root {
+      --navy: #1a2e4a;
+      --navy-light: #243d60;
+      --accent: #c8a96e;
+      --bg: #eceae6;
+      --page-shadow: 0 4px 32px rgba(26,46,74,0.13), 0 1px 4px rgba(26,46,74,0.07);
+    }
 
-    <!-- To automatically render math in text elements, include the auto-render extension: -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.12/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
-        onload="renderMathInElement(document.body, {delimiters: [{ left: '$$',  right: '$$',  display: false }]});"></script>
-    <style>
-        .markdown-body {
-            box-sizing: border-box;
-            min-width: 200px;
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 45px;
-        }
+    html { scroll-behavior: smooth; }
 
-        @media (max-width: 767px) {
-            .markdown-body {
-                padding: 15px;
-            }
-        }
-    </style>
+    body {
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding-top: 64px;
+    }
+
+    /* ── Top bar ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(26,46,74,0.25);
+    }
+
+    .header-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.35rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .header-name span {
+      color: var(--accent);
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .download-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .download-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Pages container ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .page-wrap {
+      width: 100%;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .page-wrap:nth-child(1) { animation-delay: 0.05s; }
+    .page-wrap:nth-child(2) { animation-delay: 0.15s; }
+    .page-wrap:nth-child(3) { animation-delay: 0.25s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      box-shadow: var(--page-shadow);
+      border-radius: 1px;
+    }
+
+    /* ── Loading state ── */
+    #loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 80px 0;
+      color: var(--navy);
+      opacity: 0.5;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 2px solid rgba(26,46,74,0.15);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 0 0 40px;
+      font-size: 0.75rem;
+      color: rgba(26,46,74,0.35);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 0 16px; }
+      .header-name { font-size: 1.1rem; }
+      main { padding: 32px 12px 56px; gap: 16px; }
+    }
+  </style>
 </head>
-
 <body>
-    <article class="markdown-body">
-        <h1>Nicholas Campbell's CV</h1>
-        <ul>
-        <li>Email: <a href="mailto:campbellnicholas573@gmail.com">campbellnicholas573@gmail.com</a></li>
-        <li>Location: Stellenbosch, South Africa</li>
-        <li>Website: <a href="https://nicampbel.github.io/resume">nicampbel.github.ioresume</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/nicholas-campbell">nicholas-campbell</a></li>
-        <li>GitHub: <a href="https://github.com/nicampbel">nicampbel</a></li>
-        </ul>
-        <h1>Education</h1>
-        <h2>Stellenbosch University, MEng (Cum Laude) in Mechatronic Engineering</h2>
-        <ul>
-        <li>2024 – 2025</li>
-        <li>Thesis: An Architecture for a Federated Digital Twin System for an Automotive Enterprise (80%)</li>
-        <li>Conducted in close collaboration with BMW IT Hub South Africa</li>
-        <li>Presented conference paper at SOHOMA 2025, Aix-en-Provence, France (Oct 2025)</li>
-        </ul>
-        <h2>Stellenbosch University, BEng in Mechatronic Engineering</h2>
-        <ul>
-        <li>2020 – 2023</li>
-        <li>Best Final Year Biomedical Project — Institute of Biomedical Engineering (Wearable Cardiopulmonary Exercise System, 90%), Dec 2023</li>
-        </ul>
-        <h1>Experience</h1>
-        <h2>SpatialEdge, Junior Data Engineer</h2>
-        <ul>
-        <li>2026 – present</li>
-        <li>Migrated legacy data infrastructure to a cloud-native architecture on GCP, ingesting on-premises relational databases, SaaS platforms (Salesforce, Jira), ERP systems, and internal case management systems into BigQuery</li>
-        <li>Architected and deployed an automated Salesforce → BigQuery ingestion pipeline using Python and BigQuery Data Transfer Service; built a CLI utility that auto-generates YAML configs from the Salesforce API, reducing new-asset onboarding from hours to minutes</li>
-        <li>Engineered BigQuery optimisations — transforming standard views into sharded tables and using table cloning to provide high-performance writable environments without additional storage costs</li>
-        <li>Automated GitLab CI/CD pipelines to streamline deployment cycles and synchronise configurations with cloud infrastructure, incorporating dual-stage validation and POPIA compliance tagging</li>
-        <li>Led production deployments and participated fully in Agile sprint ceremonies</li>
-        </ul>
-        <h2>BMW IT Hub South Africa, Graduate Researcher</h2>
-        <ul>
-        <li>2024 – 2025</li>
-        <li>Collaborated with multiple stakeholders to derrive business requirements, transalating them into technical requirements for a system.</li>
-        <li>Designed software architectures integrating heterogeneous digital twin platforms across the vehicle lifecycle, applying cloud services and knowledge graphs for DevOps integration and lifecycle analytics.</li>
-        <li>Participated in the BMW Automotive IT Colloquium (Jun 2025) on AI, Digital Twins, and Automation; contributed to a hackathon building a VS Code extension that integrates an LLM with the GitHub API to enhance developer efficiency across the DevOps lifecycle</li>
-        </ul>
-        <h2>Stellenbosch University, Head Teaching Assistant — Mechatronics 424</h2>
-        <ul>
-        <li>2025 – 2025</li>
-        <li>Oversaw execution of Mechatronics 424 group projects; coordinated demonstrators, managing tasks, timelines, and team communication</li>
-        </ul>
-        <h2>Zutari, Engineering Intern</h2>
-        <ul>
-        <li>2022 – 2023</li>
-        <li>Rotated through Industrial Automation and Water teams</li>
-        <li>Developed a GeoFencing application in Ignition Perspective using phone-based location data to demonstrate safety and control strategies</li>
-        </ul>
-        <h1>Projects</h1>
-        <h2>Personal Finance Tracker</h2>
-        <ul>
-        <li>2026</li>
-        <li>Full-stack personal finance dashboard built with Next.js (TypeScript), Supabase (PostgreSQL), and deployed on Vercel; ingests bank transactions nightly via a Gmail Apps Script integration</li>
-        <li>Engineered a nightly ETL pipeline (raw → prepared) with multi-currency FX conversion, a three-pass categorisation engine (rules → LLM → manual overrides), and Vercel Cron Jobs for scheduling</li>
-        <li>Features net worth tracking, budget management, recurring transaction detection, and a GitHub-style spend heatmap across 8 dashboard pages</li>
-        </ul>
-        <h2>Wearable Cardiopulmonary Exercise System</h2>
-        <ul>
-        <li>2023</li>
-        <li>Designed, built, and tested a low-cost mobile CPET system with wireless real-time data streaming up to 90 m; strong correlation with reference system</li>
-        <li>Awarded Best Final Year Biomedical Project by the Institute of Biomedical Engineering (90%)</li>
-        </ul>
-        <h2>GeoFencing Application</h2>
-        <ul>
-        <li>2023</li>
-        <li>Built a concept demonstrator in Ignition Perspective during a vacation-work period at Zutari, using phone-based GPS data to implement safety and control strategies for the Industrial Automation team</li>
-        </ul>
-        <h2>Analog Audio Amplifier</h2>
-        <ul>
-        <li>2023</li>
-        <li>Designed, built, and tested a class AB 2-channel audio amplifier outputting 8W as part of Electronics 315 (undergraduate mechatronics)</li>
-        </ul>
-        <h1>Skills</h1>
-        <ul>
-        <li>Languages: Python, SQL, JavaScript, C</li>
-        <li>Databases: BigQuery, PostgreSQL, MongoDB, Firebase, Supabase</li>
-        <li>Cloud &amp; Infrastructure: Google Cloud Platform, Apache Airflow, GitLab CI/CD, GitHub Actions, Docker; some experience with AWS &amp; Azure</li>
-        <li>Data Engineering: ETL pipeline development, data warehouse optimisation, CI/CD automation</li>
-        <li>Mechatronics: Embedded systems, CAD, control systems, signal processing</li>
-        <li>Domain Knowledge: Systems integration, software architectures for data aggregation, digital twins, knowledge graphs</li>
-        <li>Professional: Agile methodology, sprint planning, cross-functional collaboration, technical documentation, production deployment management</li>
-        </ul>
-        <h1>Awards</h1>
-        <ul>
-        <li>Best Final Year Biomedical Project: Institute of Biomedical Engineering, Dec 2023 — Wearable Cardiopulmonary Exercise System (90%)</li>
-        <li>Data School Hackathon — 2nd Place: Standard Bank &amp; Mobalyz, Aug 2023 — real-time driver risk-scoring system</li>
-        <li>Golden Key Society: Invited 2021, 2022, 2023</li>
-        </ul>
-    </article>
-</body>
 
+  <header>
+    <div class="header-name">Nicholas <span>Campbell</span></div>
+    <a class="download-btn" href="Nicholas_Campbell_CV.pdf" download>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 2v8M5 7l3 3 3-3"/><path d="M3 12h10"/>
+      </svg>
+      Download PDF
+    </a>
+  </header>
+
+  <main id="pages">
+    <div id="loader">
+      <div class="spinner"></div>
+      Loading CV…
+    </div>
+  </main>
+
+  <footer>nicampbel.github.io/resume</footer>
+
+  <script>
+    (function () {
+      const container = document.getElementById('pages');
+      const loader = document.getElementById('loader');
+      let index = 1;
+
+      function loadNext() {
+        const img = new Image();
+        img.src = 'Nicholas_Campbell_CV_' + index + '.png';
+        img.alt = 'CV page ' + index;
+        img.onload = function () {
+          if (index === 1) loader.remove();
+          const wrap = document.createElement('div');
+          wrap.className = 'page-wrap';
+          wrap.appendChild(img);
+          container.appendChild(wrap);
+          index++;
+          loadNext();
+        };
+        img.onerror = function () {
+          if (index === 1) {
+            loader.innerHTML = 'Could not load CV pages.';
+          }
+        };
+      }
+
+      loadNext();
+    })();
+  </script>
+
+</body>
 </html>
