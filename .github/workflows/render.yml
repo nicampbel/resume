@@ -22,7 +22,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install RenderCV
-        run: pip install "rendercv[full]"
+        run: pip install "rendercv[full]==2.3"
 
       - name: Download Font Awesome 6 (icon fix for rendercv v2.3)
         run: |

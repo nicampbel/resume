@@ -29,7 +29,7 @@ The GitHub Actions workflow will:
 python3 -m venv .venv
 source .venv/bin/activate
 
-pip install "rendercv[full]"
+pip install "rendercv[full]==2.3"
 
 # Font Awesome 6 icons (rendercv v2.3 ships FA7 but the Typst package needs FA6)
 mkdir -p fonts
