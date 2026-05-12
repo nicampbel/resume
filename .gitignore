@@ -1,0 +1,6 @@
+.venv/
+rendercv_output/
+fonts/
+__pycache__/
+*.pyc
+.DS_Store

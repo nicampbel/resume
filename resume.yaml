@@ -1,0 +1,176 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.3/schema.json
+cv:
+  name: Nicholas Campbell
+  location: Stellenbosch, South Africa
+  email: campbellnicholas573@gmail.com
+  website: https://nicampbel.github.io/resume
+  social_networks:
+    - network: LinkedIn
+      username: nicholas-campbell
+    - network: GitHub
+      username: nicampbel
+
+  sections:
+    education:
+      - institution: Stellenbosch University
+        area: Mechatronic Engineering
+        degree: MEng (Cum Laude)
+        start_date: 2024
+        end_date: 2025
+        highlights:
+          - "Thesis: An Architecture for a Federated Digital Twin System for an Automotive Enterprise (80%)"
+          - Conducted in close collaboration with BMW IT Hub South Africa
+          - Presented conference paper at SOHOMA 2025, Aix-en-Provence, France (Oct 2025)
+
+      - institution: Stellenbosch University
+        area: Mechatronic Engineering
+        degree: BEng
+        start_date: 2020
+        end_date: 2023
+        highlights:
+          - Best Final Year Biomedical Project — Institute of Biomedical Engineering
+            (Wearable Cardiopulmonary Exercise System, 90%), Dec 2023
+
+      # - institution: DF Malan High School
+      #   area: NSC Matric Certificate
+      #   degree: ""
+      #   start_date: 2015
+      #   end_date: 2019
+      #   highlights:
+      #     - 7 Distinctions
+
+    experience:
+      - company: SpatialEdge
+        position: Junior Data Engineer
+        # location: Stellenbosch, South Africa
+        start_date: 2026
+        end_date: present
+        highlights:
+          - Migrated legacy data infrastructure to a cloud-native architecture on GCP,
+            ingesting on-premises relational databases, SaaS platforms (Salesforce,
+            Jira), ERP systems, and internal case management systems into BigQuery
+          - Architected and deployed an automated Salesforce → BigQuery ingestion
+            pipeline using Python and BigQuery Data Transfer Service; built a CLI utility
+            that auto-generates YAML configs from the Salesforce API, reducing new-asset
+            onboarding from hours to minutes
+          - Engineered BigQuery optimisations — transforming standard views into sharded
+            tables and using table cloning to provide high-performance writable
+            environments without additional storage costs
+          - Automated GitLab CI/CD pipelines to streamline deployment cycles and
+            synchronise configurations with cloud infrastructure, incorporating
+            dual-stage validation and POPIA compliance tagging
+          - Led production deployments and participated fully in Agile sprint ceremonies
+
+      - company: BMW IT Hub South Africa
+        position: Graduate Researcher
+        # location: Stellenbosch & Pretoria, South Africa
+        start_date: 2024
+        end_date: 2025
+        highlights:
+          - Collaborated with multiple stakeholders to derrive business requirements,
+            transalating them into technical requirements for a system.
+          - Designed software architectures integrating heterogeneous digital twin
+            platforms across the vehicle lifecycle, applying cloud services and
+            knowledge graphs for DevOps integration and lifecycle analytics.
+          - Participated in the BMW Automotive IT Colloquium (Jun 2025) on AI, Digital
+            Twins, and Automation; contributed to a hackathon building a VS Code
+            extension that integrates an LLM with the GitHub API to enhance developer
+            efficiency across the DevOps lifecycle
+
+      - company: Stellenbosch University
+        position: Head Teaching Assistant — Mechatronics 424
+        # location: Stellenbosch, South Africa
+        start_date: 2025
+        end_date: 2025
+        highlights:
+          - Oversaw execution of Mechatronics 424 group projects; coordinated
+            demonstrators, managing tasks, timelines, and team communication
+
+      - company: Zutari
+        position: Engineering Intern
+        # location: South Africa
+        start_date: 2022
+        end_date: 2023
+        highlights:
+          - Rotated through Industrial Automation and Water teams
+          - Developed a GeoFencing application in Ignition Perspective using
+            phone-based location data to demonstrate safety and control strategies
+
+    projects:
+      - name: Personal Finance Tracker
+        date: 2026
+        highlights:
+          - Full-stack personal finance dashboard built with Next.js (TypeScript),
+            Supabase (PostgreSQL), and deployed on Vercel; ingests bank transactions
+            nightly via a Gmail Apps Script integration
+          - Engineered a nightly ETL pipeline (raw → prepared) with multi-currency FX
+            conversion, a three-pass categorisation engine (rules → LLM → manual
+            overrides), and Vercel Cron Jobs for scheduling
+          - Features net worth tracking, budget management, recurring transaction
+            detection, and a GitHub-style spend heatmap across 8 dashboard pages
+
+      - name: Wearable Cardiopulmonary Exercise System
+        date: 2023
+        highlights:
+          - Designed, built, and tested a low-cost mobile CPET system with wireless
+            real-time data streaming up to 90 m; strong correlation with reference system
+          - Awarded Best Final Year Biomedical Project by the Institute of Biomedical
+            Engineering (90%)
+
+      - name: GeoFencing Application
+        date: 2023
+        highlights:
+          - Built a concept demonstrator in Ignition Perspective during a vacation-work
+            period at Zutari, using phone-based GPS data to implement safety and control
+            strategies for the Industrial Automation team
+
+      - name: Analog Audio Amplifier
+        date: 2023
+        highlights:
+          - Designed, built, and tested a class AB 2-channel audio amplifier outputting
+            8W as part of Electronics 315 (undergraduate mechatronics)
+
+    skills:
+      - label: Languages
+        details: Python, SQL, JavaScript, C
+      - label: Databases
+        details: BigQuery, PostgreSQL, MongoDB, Firebase, Supabase
+      - label: Cloud & Infrastructure
+        details: Google Cloud Platform, Apache Airflow, GitLab CI/CD, GitHub Actions,
+          Docker; some experience with AWS & Azure
+      - label: Data Engineering
+        details: ETL pipeline development, data warehouse optimisation, CI/CD automation
+      - label: Mechatronics
+        details: Embedded systems, CAD, control systems, signal processing
+      - label: Domain Knowledge
+        details: Systems integration, software architectures for data aggregation,
+          digital twins, knowledge graphs
+      - label: Professional
+        details: Agile methodology, sprint planning, cross-functional collaboration,
+          technical documentation, production deployment management
+
+    awards:
+      - label: Best Final Year Biomedical Project
+        details: Institute of Biomedical Engineering, Dec 2023 — Wearable
+          Cardiopulmonary Exercise System (90%)
+      - label: Data School Hackathon — 2nd Place
+        details: Standard Bank & Mobalyz, Aug 2023 — real-time driver risk-scoring system
+      - label: Golden Key Society
+        details: Invited 2021, 2022, 2023
+
+design:
+  theme: classic
+  page:
+    size: us-letter
+    top_margin: "2cm"
+    bottom_margin: "2cm"
+    left_margin: "2cm"
+    right_margin: "2cm"
+  entries:
+    date_and_location_width: "3.0cm"
+    short_second_row: true
+  highlights:
+    left_margin: "0.6cm"
+  entry_types:
+    education_entry:
+      degree_column_width: "3.0cm"

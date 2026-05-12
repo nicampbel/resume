@@ -1,0 +1,49 @@
+name: Render CV
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install RenderCV
+        run: pip install "rendercv[full]"
+
+      - name: Download Font Awesome 6 (icon fix for rendercv v2.3)
+        run: |
+          mkdir -p fonts
+          curl -sL "https://github.com/FortAwesome/Font-Awesome/raw/6.x/webfonts/fa-regular-400.ttf" -o fonts/fa-regular-400.ttf
+          curl -sL "https://github.com/FortAwesome/Font-Awesome/raw/6.x/webfonts/fa-solid-900.ttf"   -o fonts/fa-solid-900.ttf
+          curl -sL "https://github.com/FortAwesome/Font-Awesome/raw/6.x/webfonts/fa-brands-400.ttf"  -o fonts/fa-brands-400.ttf
+
+      - name: Render resume
+        run: rendercv render resume.yaml
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nicholas_Campbell_CV
+          path: rendercv_output/*.pdf
+          retention-days: 90
+
+      - name: Deploy HTML to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: rendercv_output
+          publish_branch: gh-pages
