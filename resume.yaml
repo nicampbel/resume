@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.3/schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
 cv:
   name: Nicholas Campbell
   location: Stellenbosch, South Africa
@@ -181,8 +181,6 @@ design:
   entries:
     date_and_location_width: "3.0cm"
     short_second_row: true
-  highlights:
-    left_margin: "0.6cm"
-  entry_types:
-    education_entry:
-      degree_column_width: "3.0cm"
+    degree_width: "3.0cm"
+    highlights:
+      space_left: "0.6cm"
