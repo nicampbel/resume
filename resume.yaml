@@ -41,11 +41,12 @@ cv:
 
     experience:
       - company: SpatialEdge
-        position: Junior Data Engineer
+        position: Data Engineer
         # location: Stellenbosch, South Africa
         start_date: 2026
         end_date: present
         highlights:
+          - Currently migrating on-premises data infrastructure to a cloud-native architecture on GCP, creating a centralised lake-house for data analystics and ML use cases.
           - Migrated legacy data infrastructure to a cloud-native architecture on GCP,
             ingesting on-premises relational databases, SaaS platforms (Salesforce,
             Jira), ERP systems, and internal case management systems into BigQuery
@@ -129,17 +130,28 @@ cv:
         highlights:
           - Designed, built, and tested a class AB 2-channel audio amplifier outputting
             8W as part of Electronics 315 (undergraduate mechatronics)
+    
+    publications:
+      - title: An Architecture for a Federated Digital Twin System for an Automotive Enterprise
+        authors:
+          - Nicholas Campbell
+          - Prof. Anton H. Basson
+          - Prof. Karel K. Kruger
+        journal: Proceedings of SOHOMA (Service Oriented, Holonic and Multi-agent Manufacturing Systems for Industry of the Future) 2025
+        abstract: In automotive enterprises, digital twins (DTs) are often developed as target-specific systems for specific phases of the vehicle lifecycle, leading to fragmentation. This fragmentation hinders cross-phase analysis and decision-making. This paper presents a novel federated digital twin (FDT) system architecture that enables the integration of information from fragmented DT systems, with minimal custom development requirements. The FDT system accesses information from heterogeneous member DT platforms (where each platform hosts DTs of the same phase of the lifecycle of multiple vehicles) while preserving the platforms’ operational independence. An illustrative example, focused on vehicle component defect traceability, demonstrates the architecture’s efficacy. A preliminary evaluation indicates that the architecture reduces integration complexity while enabling responsive decision-making in critical scenarios. Although further evaluation at industry scale is necessary, the architecture is expected to enhance operational efficiency by supporting decisions that require information from across the product lifecycle.
+        date: May 2026
+        doi: 10.1007/978-3-032-18786-4_15
 
     skills:
       - label: Languages
         details: Python, SQL, JavaScript, C
       - label: Databases
-        details: BigQuery, PostgreSQL, MongoDB, Firebase, Supabase
+        details: BigQuery, PostgreSQL, Oracle, MySQL
       - label: Cloud & Infrastructure
-        details: Google Cloud Platform, Apache Airflow, GitLab CI/CD, GitHub Actions,
+        details: Google Cloud Platform (BQ, GCS, Dataproc), Apache Airflow, GitLab CI/CD, GitHub Actions,
           Docker; some experience with AWS & Azure
       - label: Data Engineering
-        details: ETL pipeline development, data warehouse optimisation, CI/CD automation
+        details: ETL pipeline development, data warehouse optimisation, CI/CD automation, Spark
       - label: Mechatronics
         details: Embedded systems, CAD, control systems, signal processing
       - label: Domain Knowledge
